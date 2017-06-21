@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/briannadunaj/Flashcard-Generator#readme",
   "dependencies": {
-    "inquirer": "^3.1.1"
+    "inquirer": "^3.1.1",
+    "inquirer-recursive": "0.0.5"
   }
 }

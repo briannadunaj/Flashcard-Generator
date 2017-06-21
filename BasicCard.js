@@ -3,7 +3,6 @@ var inquirer = require("inquirer");
 function BasicCard(front, back){
 	this.front = front;
 	this.back = back;
-
 }
 
 var first = new BasicCard("a German-born physicist who developed the general theory of relativity", "Albert Einstein");
@@ -11,26 +10,37 @@ var second = new BasicCard("an Italian physicist, mathematician, astronomer, and
 var third = new BasicCard("a Polish mathematician and astronomer who proposed a model of the universe placing the Sun, rather than the Earth, at the center", "Copernicus");
 
 var askQuestion = function(){
+//	inquirer.registerPrompt('recursive', require('inquirer-recursive'));
 	inquirer.prompt([
 	{
 		type: "input",
 		name: "firstQuestion",
 		message: first.front,
+
 	},
 	{
-		type: "confirm",
-		name: "confirm",
-		message: "Are you sure?"
+		when: function(answers){
+			if (answers.firstQuestion === first.back){
+				console.log("Correct! " + first.back + " was " + first.front);
+			} else {
+				console.log("Incorrect. " + first.back + " was " + first.front);
+			}
+		}
 	},
+
 	{
 		type: "input",
 		name: "secondQuestion",
 		message: second.front,
 	},
 	{
-		type: "confirm",
-		name: "confirm",
-		message: "Are you sure?"
+		when: function(answers){
+			if (answers.secondQuestion === second.back){
+				console.log("Correct! " + second.back + " was " + second.front);
+			} else {
+				console.log("Incorrect. " + second.back + " was " + second.front);
+			}
+		}
 	},
 	{
 		type: "input",
@@ -38,17 +48,21 @@ var askQuestion = function(){
 		message: third.front,
 	},
 	{
-		type: "confirm",
-		name: "confirm",
-		message: "Are you sure?"
+		when: function(answers){
+			if (answers.thirdQuestion === third.back){
+				console.log("Correct! " + third.back + " was " + third.front);
+			} else {
+				console.log("Incorrect. " + third.back + " was " + third.front);
+			}
+		}
 	}
 
 	]).then(function(answers){
 
-		if (answers.firstQuestion === first.back){
+/*		if (answers.firstQuestion === first.back){
 			console.log("Correct! " + first.back + " was " + first.front);
 		} else {
-			console.log("Incorrect. " + first.back + " was " + first.front);
+			console.log("Incorrect." + first.back + " was " + first.front);
 		}
 
 		if (answers.secondQuestion === second.back){
@@ -61,7 +75,7 @@ var askQuestion = function(){
 			console.log("Correct! " + third.back + " was " + third.front);
 		} else {
 			console.log("Incorrect. " + third.back + " was " + third.front);
-		}
+		}*/
 	})
 }
 
