@@ -12,18 +12,18 @@ var third = new BasicCard("a Polish mathematician and astronomer who proposed a 
 var right = 0;
 var wrong = 0;
 
-var askQuestion = function(){
+var Flashcards = function(){
 //	inquirer.registerPrompt('recursive', require('inquirer-recursive'));
 	inquirer.prompt([
 	{
 		type: "input",
-		name: "firstQuestion",
+		name: "firstCard",
 		message: first.front,
 
 	},
 	{
 		when: function(answers){
-			if (answers.firstQuestion === first.back){
+			if (answers.firstCard === first.back){
 				right++;
 				console.log("Correct! " + first.back + " was " + first.front);
 			} else {
@@ -35,12 +35,12 @@ var askQuestion = function(){
 
 	{
 		type: "input",
-		name: "secondQuestion",
+		name: "secondCard",
 		message: second.front,
 	},
 	{
 		when: function(answers){
-			if (answers.secondQuestion === second.back){
+			if (answers.secondCard === second.back){
 				right++;
 				console.log("Correct! " + second.back + " was " + second.front);
 			} else {
@@ -51,12 +51,12 @@ var askQuestion = function(){
 	},
 	{
 		type: "input",
-		name: "thirdQuestion",
+		name: "thirdCard",
 		message: third.front,
 	},
 	{
 		when: function(answers){
-			if (answers.thirdQuestion === third.back){
+			if (answers.thirdCard === third.back){
 				right++;
 				console.log("Correct! " + third.back + " was " + third.front);
 			} else {
@@ -71,4 +71,4 @@ var askQuestion = function(){
 	})
 }
 
-askQuestion();
+Flashcards();
