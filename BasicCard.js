@@ -9,6 +9,9 @@ var first = new BasicCard("a German-born physicist who developed the general the
 var second = new BasicCard("an Italian physicist, mathematician, astronomer, and philosopher who played a major role in the initiation and development of modern science", "Galileo");
 var third = new BasicCard("a Polish mathematician and astronomer who proposed a model of the universe placing the Sun, rather than the Earth, at the center", "Copernicus");
 
+var right = 0;
+var wrong = 0;
+
 var askQuestion = function(){
 //	inquirer.registerPrompt('recursive', require('inquirer-recursive'));
 	inquirer.prompt([
@@ -21,8 +24,10 @@ var askQuestion = function(){
 	{
 		when: function(answers){
 			if (answers.firstQuestion === first.back){
+				right++;
 				console.log("Correct! " + first.back + " was " + first.front);
 			} else {
+				wrong++;
 				console.log("Incorrect. " + first.back + " was " + first.front);
 			}
 		}
@@ -36,8 +41,10 @@ var askQuestion = function(){
 	{
 		when: function(answers){
 			if (answers.secondQuestion === second.back){
+				right++;
 				console.log("Correct! " + second.back + " was " + second.front);
 			} else {
+				wrong++;
 				console.log("Incorrect. " + second.back + " was " + second.front);
 			}
 		}
@@ -50,32 +57,17 @@ var askQuestion = function(){
 	{
 		when: function(answers){
 			if (answers.thirdQuestion === third.back){
+				right++;
 				console.log("Correct! " + third.back + " was " + third.front);
 			} else {
+				wrong++;
 				console.log("Incorrect. " + third.back + " was " + third.front);
 			}
 		}
 	}
 
 	]).then(function(answers){
-
-/*		if (answers.firstQuestion === first.back){
-			console.log("Correct! " + first.back + " was " + first.front);
-		} else {
-			console.log("Incorrect." + first.back + " was " + first.front);
-		}
-
-		if (answers.secondQuestion === second.back){
-			console.log("Correct! " + second.back + " was " + second.front);
-		} else {
-			console.log("Incorrect. " + second.back + " was " + second.front);
-		}
-
-		if (answers.thirdQuestion === third.back){
-			console.log("Correct! " + third.back + " was " + third.front);
-		} else {
-			console.log("Incorrect. " + third.back + " was " + third.front);
-		}*/
+		console.log("You answered " + right + " flashcards correctly and " + wrong + " flashcards incorrectly.");
 	})
 }
 
